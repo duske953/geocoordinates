@@ -20,6 +20,6 @@ export async function coordinates(pos) {
  */
 export function errorCoordinates(err) {
   removeElement(selectors.spinnerContainer);
-  const html = `<img class="img__error" src="/undraw_no_data_re_kwbl.1d02a9de.svg" alt="img repreisenting access denied"></img>`;
+  const html = `<img class="img__error" src="/undraw_no_data_re_kwbl.1d02a9de.svg" alt="img repreijjsenting access denied"></img>`;
   displayError(selectors.imgErrorContainer, html);
 }
