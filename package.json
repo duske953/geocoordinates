@@ -5,8 +5,8 @@
   "scripts": {
     "watch:js": "parcel index.html",
     "build:js": "parcel build index.html",
-    "sass-dev": "sass --watch --update --style=expanded frontend/public/sass/home.scss:frontend/public/css/styles.css",
-    "sass-prod": "sass --no-source-map --style=compressed frontend/public/sass/home.scss:frontend/public/css/styles.css"
+    "sass-dev": "sass --watch --update --style=expanded sass/home.scss:css/styles.css",
+    "sass-prod": "sass --no-source-map --style=compressed sass/home.scss:css/styles.css"
   },
   "author": "eloho",
   "license": "ISC",
