@@ -1,4 +1,4 @@
-const spinner = document.querySelector(".spinner-container");
+import noDataImg from "url:../../img/undraw_no_data_re_kwbl.svg";
 import { state } from "../model/searchModel";
 import { selectors } from "../controller/selectors";
 export function displaySpinner(parentElement) {
@@ -92,7 +92,7 @@ export function errorTimeout() {
 
 export function imgHtml(message) {
   const html = `<div class = "section-box__locations-img-box">
-            <img class="section-box__locations-img" src="/undraw_no_data_re_kwbl.1d02a9de.svg" alt="img representing no data">
+            <img class="section-box__locations-img" src=${noDataImg} alt="img representing no data">
      <p class = "p-para">${message}</p>
     </div>
     `;

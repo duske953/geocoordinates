@@ -1,3 +1,4 @@
+import accessDeniedImg from "url:../../img/undraw_access_denied_re_awnf.svg";
 import {
   displayError,
   removeElement,
@@ -19,6 +20,6 @@ export async function coordinates(pos) {
  */
 export function errorCoordinates(err) {
   removeElement(selectors.spinnerContainer);
-  const html = `<img class="img__error" src="/undraw_access_denied_re_awnf.13ee6a30.svg" alt="img repreijjsenting access denied"></img>`;
+  const html = `<img class="img__error" src=${accessDeniedImg} alt="img representing access denied"></img>`;
   displayError(selectors.imgErrorContainer, html);
 }
