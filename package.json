@@ -1,0 +1,31 @@
+{
+  "name": "geolocation-places",
+  "version": "1.0.0",
+  "description": "get location of nearyby places",
+  "scripts": {
+    "watch:js": "parcel index.html",
+    "build:js": "parcel build index.html",
+    "sass-dev": "sass --watch --update --style=expanded frontend/public/sass/home.scss:frontend/public/css/styles.css",
+    "sass-prod": "sass --no-source-map --style=compressed frontend/public/sass/home.scss:frontend/public/css/styles.css"
+  },
+  "author": "eloho",
+  "license": "ISC",
+  "dependencies": {
+    "@arcgis/core": "^4.24.7",
+    "array-sort": "^1.0.0",
+    "axios": "^0.27.2",
+    "core-js": "^3.23.3",
+    "date-and-time": "^2.4.0",
+    "dotenv": "^16.0.1",
+    "esri-loader": "^3.5.0",
+    "geolib": "^3.3.3",
+    "regenerator-runtime": "^0.13.9",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "buffer": "^6.0.3",
+    "parcel": "^2.6.0",
+    "parcel-transformer-ejs": "^1.0.0",
+    "process": "^0.11.10"
+  }
+}
