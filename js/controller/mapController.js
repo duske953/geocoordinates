@@ -6,7 +6,6 @@ import {
 import { state } from "../model/searchModel";
 import { selectors } from "./selectors";
 import { displayMap } from "../view/mapView";
-ken.src = require("./img/");
 
 export async function coordinates(pos) {
   selectors.sectionBoxButton.removeAttribute("disabled", false);
