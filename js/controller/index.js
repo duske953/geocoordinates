@@ -13,7 +13,7 @@ import { handlePaginationNext } from "./paginationController";
 import { renderPaginationNext } from "./../view/paginationView";
 import { handlePaginationPrev } from "./paginationController";
 import { renderPaginationPrev } from "./../view/paginationView";
-import { fetchLocationDetailsFromLocalStorage } from "./localStorageController";
+import { handleIntersection } from "./../view/utilityView";
 
 import { renderSectionBoxSelect } from "../view/sortView";
 import { OpenNavBar } from "../view/btnView";
@@ -37,8 +37,8 @@ function init() {
   renderPaginationNext(handlePaginationNext);
   renderPaginationPrev(handlePaginationPrev);
   modal();
+  handleIntersection();
   OpenNavBar(renderNavBar);
-  // fetchLocationDetailsFromLocalStorage();
 }
 
 init();

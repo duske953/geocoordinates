@@ -98,3 +98,24 @@ export function imgHtml(message) {
     `;
   return html;
 }
+const body = document.querySelector("html");
+export function handleIntersection() {}
+
+// selectors.locationContainer.addEventListener("scroll", () => {
+//   const observer = new IntersectionObserver(
+//     (entries, observer) => {
+//       // if (!entries[0].target.classList.contains("section-box__locations-item"))
+//       //   return;
+//       if (entries[0].isIntersecting) {
+//         window.scrollTo(0, document.body.scrollHeight);
+//       }
+//     },
+//     {
+//       root: null,
+//       threshold: 0.1,
+//     }
+//   );
+
+//   observer.observe(selectors.locationContainer.lastElementChild);
+
+// });
