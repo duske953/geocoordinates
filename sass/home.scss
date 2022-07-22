@@ -514,7 +514,6 @@ html {
         row-gap: 1.6rem;
         list-style: none;
         column-gap: 4.4rem;
-        overflow: scroll;
 
         @media (max-width:63.125em) {
             grid-template-columns: repeat(3, 1fr);
