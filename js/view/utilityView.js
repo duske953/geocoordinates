@@ -2,7 +2,8 @@ import noDataImg from "url:../../img/undraw_no_data_re_kwbl.svg";
 import { state } from "../model/searchModel";
 import { selectors } from "../controller/selectors";
 export function displaySpinner(parentElement) {
-  removeElement(parentElement);
+  const spinner = document.querySelector(".spinner");
+  if (spinner) spinner.remove();
   const html = `<div class="lds-dual-ring spinner"></div>`;
   parentElement.insertAdjacentHTML("afterbegin", html);
 }

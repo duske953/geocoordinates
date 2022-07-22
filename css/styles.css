@@ -118,6 +118,7 @@ html {
   flex-direction: column;
   gap: 3.6rem;
   transition: all 0.2s;
+  overflow: auto;
   margin: 0 auto;
 }
 .section-box__locations-box-hidden {
