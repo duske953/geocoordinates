@@ -352,7 +352,7 @@ html {
         padding: 4.4rem 1.6rem 7.4rem 1.6rem;
         height: 100vh;
         position: relative;
-        overflow: scroll;
+        overflow: auto;
         transition: all 0.4s;
 
         @media (max-width:63.125em) {
@@ -514,6 +514,7 @@ html {
         row-gap: 1.6rem;
         list-style: none;
         column-gap: 4.4rem;
+        overflow: scroll;
 
         @media (max-width:63.125em) {
             grid-template-columns: repeat(3, 1fr);
