@@ -19,7 +19,7 @@ export function modal() {
  *Function to to get the place from the modalBox and send to the "handler function" to process
  *
  * @export
- * @param {*} handler
+ * @param {*} handler A function that get's executed when the a place in the modal view is clicked
  */
 export function getPlaces(handler) {
   selectors.sectionPlaces.addEventListener("click", (e) => {
@@ -35,8 +35,8 @@ export function getPlaces(handler) {
       handleHidingRoutes();
     state.paginate = 1;
 
-    state.destinations.place = place;
-    state.destinations.placeReference = placeReference;
+    state.place.place = place; // The place we are searching (ie cinema or gas station)
+    state.place.placeReference = placeReference;
     addUtilityClass(
       selectors.locationContainer,
       "section-box__locations--active"

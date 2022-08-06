@@ -9,6 +9,14 @@ import { state } from "../model/searchModel";
 import { removeElement, watchPosition } from "./utilityView";
 
 let path;
+/**
+ *Function that shows the routes(a graphic) between two position coordinates
+ *
+ * @param {Number} userLat The user's current latitude
+ * @param {Number} userLng The usur's current longitude;
+ * @param {Number} locationLat The latitude of the location we are visiting
+ * @param {Number} locationLng The longitude of the location we are visiting
+ */
 async function getRoute(userLat, userLng, locationLat, locationLng) {
   const [RouteParameters, route, Stop, Collection] = await loadModules([
     "esri/rest/support/RouteParameters",
@@ -29,11 +37,6 @@ async function getRoute(userLat, userLng, locationLat, locationLng) {
     }),
   ]);
 
-  // if (Object.entries(state.routePath).length !== 0) {
-  //   console.log(state.routePath);
-  //   state.mapView.graphics.remove(state.routePath);
-  // }
-
   const routeParams = new RouteParameters({
     stops,
   });
@@ -49,11 +52,18 @@ async function getRoute(userLat, userLng, locationLat, locationLng) {
     width: 4,
   };
 
-  state.mapView.graphics.add(path.route);
+  state.mapView.graphics.add(path.route); // adding the graphics to the map;
 }
 
 let pointLocationGraphic;
 
+/**
+ *overall Function that calls the "getRoute" method and displays a dot on the map with the given location coordinates and also displays the routes between two points
+ *
+ * @export
+ * @param {String} longitude The longitude of the location we are going/visiting
+ * @param {String} latitude The latitude of the location we are going/visiting
+ */
 export async function routePath(longitude, latitude) {
   watchPosition();
   const [Graphic] = await loadModules(["esri/Graphic"]);
@@ -61,23 +71,23 @@ export async function routePath(longitude, latitude) {
   if (path) {
     state.mapView.graphics.remove(path.route);
     path = undefined;
-  }
+  } // making sure ther's only one route linking two points on the map;
 
   if (pointLocationGraphic) {
     state.mapView.graphics.remove(pointLocationGraphic);
-  }
+  } // making sure there's only one point of the location we are visiting
 
   const pointLocation = {
     type: "point",
     longitude,
     latitude,
-  };
+  }; // the coordinates points of the location we are visiting;
 
   const userPoint = {
     type: "point",
     longitude: state.coordinates.longitude,
     latitude: state.coordinates.latitude,
-  };
+  }; // the user's current coordinates points
 
   const pointLocationSymbol = {
     type: "simple-marker",
@@ -104,7 +114,7 @@ export async function routePath(longitude, latitude) {
 
   state.mapView.goTo([userLocationGraphic, pointLocationGraphic], {
     duration: 5000,
-  });
+  }); // zooming the map to cover all points on the map;
 
   getRoute(
     state.coordinates.latitude,
@@ -116,6 +126,10 @@ export async function routePath(longitude, latitude) {
 
 let track;
 let trackGraphic;
+/**
+ *Function to track the user's location
+ *
+ */
 async function trackUserLocation() {
   const [Graphic, Track] = await loadModules([
     "esri/Graphic",
@@ -145,6 +159,7 @@ async function trackUserLocation() {
 
   state.mapView.when(
     function (res) {
+      removeElement(selectors.spinnerContainer); // removing the spinner once the map loads(when it's ready)
       fetchLocationDetailsFromLocalStorage();
       track.start();
       track.on("track", (res) => {});
@@ -154,8 +169,14 @@ async function trackUserLocation() {
     }
   );
 }
-
-export async function displayMap(latitude, longitude, location) {
+/**
+ *Function to displaymap in the ui
+ *
+ * @export
+ * @param {String} latitude The current user latitude
+ * @param {String} longitude The current user longitude;
+ */
+export async function displayMap(latitude, longitude) {
   const [Map, MapView, esriConfig] = await loadModules([
     "esri/Map",
     "esri/views/MapView",
@@ -173,7 +194,5 @@ export async function displayMap(latitude, longitude, location) {
     zoom: 12, // Zoom level
     container: selectors.mapBox, // Div element
   });
-  removeElement(selectors.spinnerContainer);
   await trackUserLocation();
-  // addPointToMap(longitude, latitude);
 }

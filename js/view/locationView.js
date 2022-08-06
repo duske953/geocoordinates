@@ -2,7 +2,6 @@ import { removeElement, displayError } from "./utilityView";
 import { state } from "../model/searchModel";
 import { selectors } from "../controller/selectors";
 import { showMarkerOnPlace } from "./utilityView";
-let category;
 /**
  *
  *Function to render the searchedLocations to the ui
@@ -56,7 +55,7 @@ export function displayLocations(locations, currentPlace) {
  *
  *Function that executes when one of the currently searhed locations is clicked or focused
  * @export
- * @param {Function} handler
+ * @param {Function} handler A function that executes when any of the given locations is clicked
  */
 export function getCurrentSearchedLocation(handler) {
   selectors.locationItemsBox.addEventListener("click", (e) => {
@@ -65,16 +64,16 @@ export function getCurrentSearchedLocation(handler) {
       (el) =>
         el.place_id ===
         e.target.closest(".section-box__locations-item").getAttribute("data-id")
-    );
+    ); // The entire data of the element clicked on
     const coords = e.target
       .closest(".section-box__locations-item")
       .getAttribute("data-coords"); //getting the coords from the currently clicked location
     selectors.locationContainer.classList.remove(
       "section-box__locations--active"
-    );
+    ); // The coordinates of the location clicked on
     state.currentDestination.placeElement = e.target.closest(
       ".section-box__locations-item"
-    );
+    ); //The html element clicked on;
     handler(
       coords,
       state.currentDestination.place,

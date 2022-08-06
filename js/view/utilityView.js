@@ -18,11 +18,23 @@ export function removeElement(parentElement) {
   parentElement.innerHTML = "";
 }
 
+/**
+ *
+ *Function to display error
+ * @export
+ * @param {Node || String} parentElement An html elment
+ * @param {String} msg the error message
+ */
 export function displayError(parentElement, msg) {
   removeElement(parentElement);
   parentElement.insertAdjacentHTML("afterbegin", msg);
 }
 
+/**
+ *Funtion to show the routes to a give location (manipulating the dom)
+ *
+ * @export
+ */
 export function showRoutes() {
   addUtilityClass(
     selectors.locationItemsBox,
@@ -49,6 +61,12 @@ export function showRoutes() {
   );
 }
 
+/**
+ *
+ *Function to show marker on a give location => display marker on a html element
+ * @export
+ * @param {Node || String} currentDestination The html element to display the marker => The location that got clicked
+ */
 export function showMarkerOnPlace(currentDestination) {
   document
     .querySelectorAll(".section-box__locations-item--active")
@@ -68,13 +86,23 @@ function position(pos) {
 function error() {
   return true;
 }
-
+/**
+ *Function to get the current position of the user;
+ *
+ * @export
+ */
 export function watchPosition() {
   navigator.geolocation.getCurrentPosition(position, error, {
     enableHighAccuracy: true,
   });
 }
-
+/**
+ *Function to add a class to an element
+ *
+ * @export
+ * @param {String || Node} parentElement A html string
+ * @param {String} classList The class that is added to the parentelement
+ */
 export function addUtilityClass(parentElement, classList) {
   parentElement.classList.add(classList);
 }
@@ -82,7 +110,12 @@ export function addUtilityClass(parentElement, classList) {
 export function removeUtiliyClass(parentElement, classList) {
   parentElement.classList.remove(classList);
 }
-
+/**
+ *
+ *Function that rejects immediately after a given amount of seconds using the promise api
+ * @export
+ * @return {*}
+ */
 export function errorTimeout() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -91,6 +124,13 @@ export function errorTimeout() {
   });
 }
 
+/**
+ *Function to display an image with a given message on the webpage
+ *
+ * @export
+ * @param {String} message A message that describes the image
+ * @return {String} retruns the html tag
+ */
 export function imgHtml(message) {
   const html = `<div class = "section-box__locations-img-box">
             <img class="section-box__locations-img" src=${noDataImg} alt="img representing no data">
@@ -99,24 +139,3 @@ export function imgHtml(message) {
     `;
   return html;
 }
-const body = document.querySelector("html");
-export function handleIntersection() {}
-
-// selectors.locationContainer.addEventListener("scroll", () => {
-//   const observer = new IntersectionObserver(
-//     (entries, observer) => {
-//       // if (!entries[0].target.classList.contains("section-box__locations-item"))
-//       //   return;
-//       if (entries[0].isIntersecting) {
-//         window.scrollTo(0, document.body.scrollHeight);
-//       }
-//     },
-//     {
-//       root: null,
-//       threshold: 0.1,
-//     }
-//   );
-
-//   observer.observe(selectors.locationContainer.lastElementChild);
-
-// });

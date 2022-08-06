@@ -14,13 +14,13 @@ import { storeLocationsInLocalStorage } from "./localStorageController";
 
 /**
  *
- *Function to send the searched place to the backend and process
- * @param {Object} currentPlace An object of the place we are trying to search
+ * Function that controls getting the locations from a given place
+ * @param {Object} place An object of the place we are trying to search
  */
-export async function handleLocationDetails(currentPlace) {
+export async function handleLocationDetails(place) {
   storeLocationsInLocalStorage();
   if (
-    currentPlace.place === state.destinationLocations.place &&
+    place.place === state.destinationLocations.place &&
     Object.entries(state.destinationLocations).length !== 0
   ) {
     removeUtiliyClass(selectors.locationContainer, "section-locations__active");
@@ -29,7 +29,7 @@ export async function handleLocationDetails(currentPlace) {
 
   try {
     displaySpinner(selectors.locationItemsBox);
-    await Promise.race([errorTimeout(), fetchLocationDetails(currentPlace)]);
+    await Promise.race([errorTimeout(), fetchLocationDetails(place)]);
     selectors.sectionBoxSelect.selectedIndex = 0;
     removeElement(selectors.spinnerLocations);
     paginationView();

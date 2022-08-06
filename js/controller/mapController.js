@@ -8,6 +8,12 @@ import { state } from "../model/searchModel";
 import { selectors } from "./selectors";
 import { displayMap } from "../view/mapView";
 
+/**
+ *
+ *
+ * @export
+ * @param {Object} pos The position object gotten from the browswer
+ */
 export async function coordinates(pos) {
   selectors.sectionBoxButton.removeAttribute("disabled", false);
   watchPosition();

@@ -1,8 +1,6 @@
 import { state } from "./searchModel";
-import { handleRouting } from "../controller/locationRouteController";
 import axios from "axios";
 import { watchPosition } from "../view/utilityView";
-const locationItemsBox = document.querySelector(".section-box__locations-box");
 
 async function getLocationRoutes(locationCoords, userCoords) {
   const [lat, lng] = locationCoords.split(",");
@@ -21,16 +19,16 @@ async function getLocationRoutes(locationCoords, userCoords) {
  *
  * @export
  * @param {String} coords The coordinates of the location searched for
- * @param {Object} currentDestination The data of the location searched for
+ * @param {Object} place The data of the location searched for
  * @return {*}
  */
-export function handleCurrentSearchedLocation(coords, currentDestination) {
+export function handleCurrentSearchedLocation(coords, place) {
   watchPosition();
   return new Promise(async (resolve, reject) => {
     try {
       const routes = await getLocationRoutes(coords, state.coordinates);
       state.routes = routes;
-      state.routes = Object.assign(state.routes, currentDestination);
+      state.routes = Object.assign(state.routes, place);
       resolve(state.routes);
     } catch (err) {
       reject(err);

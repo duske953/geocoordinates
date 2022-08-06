@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import { API_KEY } from "../controller/helpers";
 
 export const state = {
-  destinations: {},
+  place: {},
   coordinates: {},
   destinationLocations: {},
   destinationItems: [],
@@ -40,9 +40,9 @@ function distanceBetweenCoordinates(location) {
   return distance;
 }
 /**
- *Function to merge a unique id and the distance between the positions to each of the place location
+ *Function to merge a unique id and the distance between two coordinates (the user's coordinates and the locations coordinates)
  *
- * @param {Array || Object} arg An array ob object
+ * @param {Array || Object} arg An array of the locations of a given place;
  */
 function mergeDataToLocations(arg) {
   arg.candidates.forEach((el) => {
@@ -54,6 +54,13 @@ function mergeDataToLocations(arg) {
   });
 }
 
+/**
+ *Function to get the locations data of a place
+ *
+ * @param {Object} category An object containing the place we are visiting (ie gas station or cinema)
+ * @param {Object} coords An object of the user's current position coordinates
+ * @return {Array} An array of the locations gotten from the api
+ */
 async function getLocationDetails(category, coords) {
   if (!category && !coords) return;
   try {
@@ -68,24 +75,21 @@ async function getLocationDetails(category, coords) {
 
 /**
  *
- *Function to get the list of place location that matches the place we searched for
+ *Function to get the list of place location that matches the place we searched for (ie cinema or gas station)
  * @export
- * @param {Object} currentPlace An object of the place we are searching for
+ * @param {Object} place An object of the place destination we are searching for
  * @return {*}
  */
-export function fetchLocationDetails(currentPlace) {
+export function fetchLocationDetails(place) {
   watchPosition();
   return new Promise(async (resolve, reject) => {
     try {
-      const locationData = await getLocationDetails(
-        currentPlace,
-        state.coordinates
-      );
+      const locationData = await getLocationDetails(place, state.coordinates);
       mergeDataToLocations(locationData);
       state.destinationLocations = locationData; // saving the received data in a state
       state.destinationLocations = Object.assign(
         state.destinationLocations,
-        currentPlace
+        place
       );
       resolve(state.destinationLocations); // resolving the received locations
     } catch (err) {

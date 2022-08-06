@@ -4,14 +4,14 @@ import { selectors } from "../controller/selectors";
 import { state } from "../model/searchModel";
 
 /**
- *A function to display routes that leads to a specifc direction
+ *A function to display routes that leads to a specifc direction in the ui
  *
  * @export
  * @param {Object} routes An object of routes that leads to a specific location
- * @param {Object} currentDestination The data of the location searched for
+ * @param {Object} place The data of the location searched for
  * @return {*}
  */
-export function displayRoute(routes, currentDestination) {
+export function displayRoute(routes, place) {
   const now = new Date();
   const { directions } = routes;
   if (!directions) return;
@@ -30,7 +30,7 @@ export function displayRoute(routes, currentDestination) {
     selectors.routeBox.insertAdjacentHTML("beforeend", html);
   });
   const goBackIcon = `<ion-icon class = "arrow-icon" name="arrow-back-outline"></ion-icon>`;
-  const heading = `<p class = "currentdestination">${currentDestination.address}</p>`;
+  const heading = `<p class = "currentdestination">${place.address}</p>`;
   selectors.routeBox.insertAdjacentHTML("afterbegin", goBackIcon);
   selectors.routeBox.insertAdjacentHTML("afterbegin", heading);
 }
@@ -38,7 +38,7 @@ export function displayRoute(routes, currentDestination) {
  *Function to hide the routes
  *
  * @export
- * @param {Function} handler A function that get's executed when the "arrow icon" is clicked
+ * @param {Function} handler A function that get's executed when the "go back arrow icon" is clicked
  */
 export function hideRoutes(handler) {
   selectors.routeBox.addEventListener("click", (e) => {

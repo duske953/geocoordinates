@@ -1,5 +1,3 @@
-import { state } from "../model/searchModel";
-import { showMarkerOnPlace } from "./utilityView";
 import arraySort from "array-sort";
 const sectionBoxSelect = document.querySelector(".section-box__select");
 import { renderLocations } from "./paginationView";

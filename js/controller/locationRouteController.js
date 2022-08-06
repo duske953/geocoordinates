@@ -15,17 +15,13 @@ import { handleCurrentSearchedLocation } from "../model/locationRouteModel";
  *
  *Function to handle routing on the map
  * @export
- * @param {String} coords The coordinates of the location searched for
- * @param {Object} currentDestination The data of the location searched for
+ * @param {String} coords The coordinates of the place clicked;
+ * @param {Object} place The data of the location searched for
  * @return {*}
  */
-export async function handleRouting(
-  coords,
-  currentDestination,
-  currentDestinationElement
-) {
+export async function handleRouting(coords, place, currentDestinationElement) {
   // setting pointer-events to none when location is clicked
-  if (state.routes.place_id === currentDestination.place_id) {
+  if (state.routes.place_id === place.place_id) {
     showRoutes();
     return;
   }
@@ -35,12 +31,12 @@ export async function handleRouting(
     addUtilityClass(selectors.locationItemsBox, "p-events");
     await Promise.race([
       errorTimeout(),
-      handleCurrentSearchedLocation(coords, currentDestination),
+      handleCurrentSearchedLocation(coords, place),
     ]);
     showRoutes();
 
     showMarkerOnPlace(currentDestinationElement);
-    displayRoute(state.routes, currentDestination);
+    displayRoute(state.routes, place);
 
     const [lat, lng] = coords.split(",");
     routePath(lng, lat);
