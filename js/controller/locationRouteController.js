@@ -53,7 +53,7 @@ export async function handleRouting(coords, place, currentDestinationElement) {
 }
 
 /**
- *Function that handles execution of the hiding the route;
+ *Function that handles execution of the hiding the route box;
  *
  * @export
  */

@@ -37,7 +37,6 @@ function init() {
   renderPaginationNext(handlePaginationNext);
   renderPaginationPrev(handlePaginationPrev);
   modal();
-  handleIntersection();
   OpenNavBar(renderNavBar);
 }
 

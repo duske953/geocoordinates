@@ -10,7 +10,7 @@ import { selectors } from "./selectors";
  */
 export function storeLocationsInLocalStorage() {
   if (Object.entries(state.place).length === 0) return;
-  localStorage.setItem("place", JSON.stringify(state.destinations));
+  localStorage.setItem("place", JSON.stringify(state.place));
 }
 
 /**

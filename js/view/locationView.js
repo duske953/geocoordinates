@@ -39,7 +39,7 @@ export function displayLocations(locations, currentPlace) {
   });
   selectors.locationItemsBox.insertAdjacentHTML(
     "afterbegin",
-    `<h2 class = "section-box__title">${currentPlace.split(".").at(-1)}</h2>`
+    `<h2 class = "section-box__title">${currentPlace.split(".")[1]}</h2>`
   );
   if (state.currentDestination.placeElement) {
     const currentDestinationElementId =

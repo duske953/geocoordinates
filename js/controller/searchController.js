@@ -33,10 +33,7 @@ export async function handleLocationDetails(place) {
     selectors.sectionBoxSelect.selectedIndex = 0;
     removeElement(selectors.spinnerLocations);
     paginationView();
-    displayLocations(
-      renderLocations(),
-      state.destinationLocations.placeReference
-    );
+    displayLocations(renderLocations(), state.place.placeReference);
   } catch (err) {
     removeUtiliyClass(
       selectors.paginationBox,
@@ -50,7 +47,7 @@ export async function handleLocationDetails(place) {
     else
       return displayError(
         selectors.locationItemsBox,
-        imgHtml(`We couldn't find any ${currentPlace.place} near your location`)
+        imgHtml(`We couldn't find any ${place.place} near your location`)
       );
   }
 }

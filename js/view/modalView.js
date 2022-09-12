@@ -42,6 +42,6 @@ export function getPlaces(handler) {
       "section-box__locations--active"
     );
     removeUtiliyClass(selectors.sectionBoxSelect, "d-none");
-    handler(state.destinations);
+    handler(state.place);
   });
 }
