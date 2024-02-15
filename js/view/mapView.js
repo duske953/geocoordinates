@@ -183,7 +183,7 @@ export async function displayMap(latitude, longitude) {
     "esri/config",
   ]);
   esriConfig.apiKey =
-    "AAPK6f1f10425a4947c9a2bc22cf9657f53esuOFoaKEqM96GD1-T1wQPiTSaOvAr7AV4re7uwL3aJwMUsQm94bfQfLqW92UaLIj";
+    `${process.env.API_KEY}`
   state.map = new Map({
     basemap: "arcgis-navigation-night", // Basemap layer service
   });
