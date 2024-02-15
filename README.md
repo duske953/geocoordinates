@@ -37,7 +37,7 @@ Make navigating unfamiliar areas a breeze with Geocoordinates, a user-friendly s
    * Create an account and follow the instructions to obtain an API key. 
 4. **Start the Development Server:**
    ```bash
-   npm start
+   npm watch:js
    ```
 5. **Open the Application:**
    * Navigate to http://localhost:3000 (or the specified port) in your web browser.
