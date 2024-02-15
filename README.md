@@ -1,12 +1,14 @@
 ## Geocoordinates: Find Nearby Places - Easily!
 
+**Website:** [https://geocoordinates.netlify.app/](https://geocoordinates.netlify.app/)
+
 **Project Objective:**
 
 Make navigating unfamiliar areas a breeze with Geocoordinates, a user-friendly single-page web app that helps you **discover nearby places** across various categories (restaurants, hospitals, attractions, etc.) right from your browser.
 
 **Key Features:**
 
-* **Location-Based Search:** Enter an address, landmark, or textual reference to instantly find relevant places near your current location.
+* **Place-Based Search:** get access to over 20 known places
 * **Proximity Sorting:** Prioritize the closest options first, ensuring you find the most convenient choices.
 * **Interactive Map:** Visualize nearby places on a dynamic map that updates as you move, providing a clear overview of your surroundings.
 * **Step-by-Step Directions:** Get detailed turn-by-turn instructions to guide you directly to your chosen destination.
@@ -24,7 +26,7 @@ Make navigating unfamiliar areas a breeze with Geocoordinates, a user-friendly s
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/your-username/geocoordinates
+   git clone https://github.com/duske953/geocoordinates
    ```
 2. **Install Dependencies:**
    ```bash
