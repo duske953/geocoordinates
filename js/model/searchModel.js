@@ -65,7 +65,7 @@ async function getLocationDetails(category, coords) {
   if (!category && !coords) return;
   try {
     const locationData = await axios.get(
-      `https://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates?singleLine=&category=${category.place}&location=${coords.longitude},${coords.latitude}&outfields=*&token=AAPK6f1f10425a4947c9a2bc22cf9657f53esuOFoaKEqM96GD1-T1wQPiTSaOvAr7AV4re7uwL3aJwMUsQm94bfQfLqW92UaLIj&f=json`
+      `https://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates?singleLine=&category=${category.place}&location=${coords.longitude},${coords.latitude}&outfields=*&token=${process.env.API_KEY}&f=json`
     );
     return locationData.data;
   } catch (err) {
