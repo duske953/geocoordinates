@@ -8,7 +8,7 @@
     "sass-dev": "sass --watch --update --style=expanded sass/home.scss:css/styles.css",
     "sass-prod": "sass --no-source-map --style=compressed sass/home.scss:css/styles.css"
   },
-  "author": "eloho",
+  "author": "Eloho Kennedy",
   "license": "ISC",
   "dependencies": {
     "@arcgis/core": "^4.24.7",
@@ -24,8 +24,10 @@
   },
   "devDependencies": {
     "buffer": "^6.0.3",
+    "os-browserify": "^0.3.0",
     "parcel": "^2.6.0",
     "parcel-transformer-ejs": "^1.0.0",
+    "path-browserify": "^1.0.1",
     "process": "^0.11.10"
   }
 }
