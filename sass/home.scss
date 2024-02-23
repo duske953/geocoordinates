@@ -17,12 +17,13 @@ body {
     font-family: 'Rubik',
         sans-serif;
     position: relative;
+    overflow-x: hidden;
 }
 
 
 html {
     font-size: 62.5%;
-
+overflow-x: hidden;
     @media (max-width:75em) {
         font-size: 56.25%;
     }
@@ -47,6 +48,8 @@ html {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        text-align: center;
+        font-size: 2.4rem;
     }
 
     &__locations-route {
@@ -61,6 +64,10 @@ html {
         height: 100vh;
         transition: all .3s ease-in-out;
         overflow: auto;
+
+        &::-webkit-scrollbar{
+            display: none;
+        }
 
         &--active {
             opacity: 1;
@@ -151,7 +158,9 @@ html {
         //     gap: 3.6rem;
         //     padding-top: 4.4rem;
         // }
-
+        &::-webkit-scrollbar{
+            display: none;
+        };
         &-hidden {
             transform: translateX(-200%);
         }
@@ -355,6 +364,9 @@ html {
         position: relative;
         overflow: auto;
         transition: all 0.4s;
+        &::-webkit-scrollbar{
+            display: none;
+        };
 
         @media (max-width:63.125em) {
             width: 55%;
@@ -424,7 +436,7 @@ html {
     }
 
     .img__error {
-        width: 100%;
+        width: 75%;
     }
 }
 
@@ -545,9 +557,14 @@ html {
 
 .img-box {
     position: absolute;
-    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%)
+    top:50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    font-size: 1.6rem;
+    line-height: 1.4;
+    font-weight: 500;
+
 }
 
 .p-para {
