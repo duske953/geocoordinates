@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 import { coordinates, errorCoordinates } from "./mapController";
@@ -22,6 +23,7 @@ const spinnerContainer = document.querySelector(".spinner-container--map");
 function renderNavBar() {
   return true;
 }
+
 
 navigator.geolocation.getCurrentPosition(coordinates, errorCoordinates, {
   enableHighAccuracy: true,
