@@ -26,6 +26,6 @@ export async function coordinates(pos) {
  */
 export function errorCoordinates(err) {
   removeElement(selectors.spinnerContainer);
-  const html = `<img class="img__error" src=${accessDeniedImg} alt="img representing access denied"></img>`;
+  const html = `<div><img class="img__error" src=${accessDeniedImg} alt="img representing access denied"></img><p>This app relies heavily on your location to work properly. Without it, the app will not be usable. Please grant location access to proceed.</p></div>`;
   displayError(selectors.imgErrorContainer, html);
 }
