@@ -10,7 +10,7 @@ import { addUtilityClass } from "./utilityView";
  */
 export function renderLocations() {
   state.paginationPages =
-    state.destinationLocations.candidates.length / state.resultPerPage;
+    Math.ceil(state.destinationLocations.candidates.length / state.resultPerPage)
   selectors.paginationText.textContent = `${state.paginate} OF ${state.paginationPages}`;
   return state.destinationLocations.candidates.slice(
     (state.paginate - 1) * 10,
