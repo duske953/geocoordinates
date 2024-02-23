@@ -47,7 +47,7 @@ export async function handleLocationDetails(place) {
     else
       return displayError(
         selectors.locationItemsBox,
-        imgHtml(`We couldn't find any ${place.place} near your location`)
+        imgHtml(`We couldn't find any ${place.place} locations near you`)
       );
   }
 }
