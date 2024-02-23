@@ -16,7 +16,7 @@ export function displayLocations(locations, currentPlace) {
   if (locations.length === 0 || !Array.isArray(locations)) {
     return displayError(
       selectors.locationItemsBox,
-      `<img class="section-box__locations-img" src="img/undraw_no_data_re_kwbl.svg" alt="">`
+      `<img class="section-box__locations-img" src="img/undraw_no_data_re_kwbl.svg" alt="Image representing location not found">`
     );
   }
   selectors.sectionBoxSelect.classList.remove("section-box__select--inactive");
