@@ -65,7 +65,7 @@ html {
         left: 0;
         height: 90vh;
         background-color: #e7f5ff;
-        transition: all .1s;
+        transition: all 0.5s ease-in-out;
         z-index:2000;
         overflow: auto;
 
@@ -120,7 +120,6 @@ html {
         padding: 0.8rem;
         align-items: center;
         transition: all .2s;
-        position: sticky;
         &--inactive{
             opacity: 0;
             visibility: hidden;
@@ -365,7 +364,7 @@ html {
         z-index:5000;
         overflow: auto;
    
-        transition: all 0.1s;
+        transition: all 0.5s ease-in-out;
         &::-webkit-scrollbar{
             display: none;
         };

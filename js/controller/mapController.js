@@ -17,8 +17,9 @@ import { addUtilityClass } from '../view/utilityView';
  * @param {Object} pos The position object gotten from the browswer
  */
 export async function coordinates(pos) {
+  const matchMedia = window.matchMedia("(max-width:63.125em)")
   addUtilityClass(document.querySelector(".lds-dual-ring"),"pos-abs")
-  removeUtilityClass(selectors.locationContainer,"section-box__locations--inactive")
+  !matchMedia.matches && removeUtilityClass(selectors.locationContainer,"section-box__locations--inactive")
   removeUtilityClass(selectors.sectionBoxNav,"section-box__nav--inactive")
   selectors.sectionBoxButton.removeAttribute("disabled", false);
   watchPosition();

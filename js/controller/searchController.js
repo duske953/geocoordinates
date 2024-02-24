@@ -34,6 +34,7 @@ export async function handleLocationDetails(place) {
     if(state.destinationLocations.candidates.length === 0) throw error("Location not found")
     selectors.sectionBoxSelect.selectedIndex = 0;
     removeUtilityClass(selectors.sectionBoxSelect,"section-box__select--inactive")
+    removeUtilityClass(selectors.locationContainer,"section-box__locations--inactive")
     document.querySelector(".spinner").remove()
     paginationView();
     displayLocations(renderLocations(), state.place.placeReference);
