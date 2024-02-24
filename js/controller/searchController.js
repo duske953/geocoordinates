@@ -36,12 +36,14 @@ export async function handleLocationDetails(place) {
     removeUtilityClass(selectors.sectionBoxSelect,"section-box__select--inactive")
     removeUtilityClass(selectors.locationContainer,"section-box__locations--inactive")
     document.querySelector(".spinner").remove()
+    document.querySelector("footer").style.display = "block"
     paginationView();
     displayLocations(renderLocations(), state.place.placeReference);
 
       // selectors.locationContainer.style.zIndex = 2000
 
   } catch (err) {
+    document.querySelector("footer").style.display = "none"
     addUtilityClass(selectors.sectionBoxSelect,"section-box__select--inactive")
     document.querySelector(".spinner").remove()
     removeUtilityClass(
