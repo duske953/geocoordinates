@@ -1,6 +1,6 @@
 import { state } from "./searchModel";
 import axios from "axios";
-import { watchPosition } from "../view/utilityView";
+import { watchPosition } from '../controller/utilityController';
 
 async function getLocationRoutes(locationCoords, userCoords) {
   const [lat, lng] = locationCoords.split(",");

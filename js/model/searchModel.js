@@ -1,5 +1,5 @@
 const axios = require("axios");
-import { watchPosition } from "../view/utilityView";
+import { watchPosition } from '../controller/utilityController';
 import { getDistance } from "geolib";
 import { v4 as uuidv4 } from "uuid";
 import { API_KEY } from "../controller/helpers";
@@ -18,6 +18,7 @@ export const state = {
   location: {},
   paginate: 1,
   resultPerPage: 10,
+  activeNav:0,
 };
 
 /**

@@ -1,6 +1,7 @@
 import { removeElement, displayError } from "./utilityView";
 import { state } from "../model/searchModel";
 import { selectors } from "../controller/selectors";
+import noDataImg from "url:../../img/undraw_no_data_re_kwbl.svg";
 import { showMarkerOnPlace } from "./utilityView";
 /**
  *
@@ -13,12 +14,6 @@ import { showMarkerOnPlace } from "./utilityView";
 
 export function displayLocations(locations, currentPlace) {
   removeElement(selectors.locationItemsBox); // clearing the parent element when new locations is being added to the ui
-  if (locations.length === 0 || !Array.isArray(locations)) {
-    return displayError(
-      selectors.locationItemsBox,
-      `<img class="section-box__locations-img" src="img/undraw_no_data_re_kwbl.svg" alt="Image representing location not found">`
-    );
-  }
   selectors.sectionBoxSelect.classList.remove("section-box__select--inactive");
   locations.forEach((location, i) => {
     const html = `
@@ -68,9 +63,7 @@ export function getCurrentSearchedLocation(handler) {
     const coords = e.target
       .closest(".section-box__locations-item")
       .getAttribute("data-coords"); //getting the coords from the currently clicked location
-    selectors.locationContainer.classList.remove(
-      "section-box__locations--active"
-    ); // The coordinates of the location clicked on
+  // The coordinates of the location clicked on
     state.currentDestination.placeElement = e.target.closest(
       ".section-box__locations-item"
     ); //The html element clicked on;

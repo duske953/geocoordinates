@@ -14,10 +14,13 @@ import { handlePaginationNext } from "./paginationController";
 import { renderPaginationNext } from "./../view/paginationView";
 import { handlePaginationPrev } from "./paginationController";
 import { renderPaginationPrev } from "./../view/paginationView";
+import { watchPosition } from './utilityController';
 import { handleIntersection } from "./../view/utilityView";
 
 import { renderSectionBoxSelect } from "../view/sortView";
 import { OpenNavBar } from "../view/btnView";
+import { state } from '../model/searchModel';
+import { selectors } from './selectors';
 const spinnerContainer = document.querySelector(".spinner-container--map");
 
 function renderNavBar() {
@@ -25,13 +28,20 @@ function renderNavBar() {
 }
 
 
+
+
 navigator.geolocation.getCurrentPosition(coordinates, errorCoordinates, {
   enableHighAccuracy: true,
-  timeout: 10000,
+  timeout: 15000,
 });
 
+// setInterval(() => {
+// watchPosition()
+// console.log(state.coordinates)
+// },1000)
+
 function init() {
-  displaySpinner(spinnerContainer);
+  displaySpinner(selectors.mapBox,"fixed");
   getPlaces(handleLocationDetails);
   renderSectionBoxSelect(handleSectionBoxSelect);
   getCurrentSearchedLocation(handleRouting);

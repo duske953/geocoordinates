@@ -6,7 +6,8 @@ setDefaultOptions({
 });
 
 import { state } from "../model/searchModel";
-import { removeElement, watchPosition } from "./utilityView";
+import { removeElement } from "./utilityView";
+import { watchPosition } from '../controller/utilityController';
 
 let path;
 /**
@@ -113,7 +114,7 @@ export async function routePath(longitude, latitude) {
   state.mapView.graphics.add(pointLocationGraphic);
 
   state.mapView.goTo([userLocationGraphic, pointLocationGraphic], {
-    duration: 5000,
+    duration: 3000,
   }); // zooming the map to cover all points on the map;
 
   getRoute(
@@ -159,8 +160,11 @@ async function trackUserLocation() {
 
   state.mapView.when(
     function (res) {
-      removeElement(selectors.spinnerContainer); // removing the spinner once the map loads(when it's ready)
-      fetchLocationDetailsFromLocalStorage();
+      document.querySelector(".spinner").remove() // removing the spinner once the map loads(when it's ready)
+      setTimeout(() => {
+        fetchLocationDetailsFromLocalStorage();
+      },1500)
+   
       track.start();
       track.on("track", (res) => {});
     },

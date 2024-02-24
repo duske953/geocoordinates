@@ -1,4 +1,5 @@
 import arraySort from "array-sort";
+import { state } from '../model/searchModel';
 const sectionBoxSelect = document.querySelector(".section-box__select");
 import { renderLocations } from "./paginationView";
 
@@ -23,6 +24,7 @@ function sortLocations(option) {
 export function renderSectionBoxSelect(handler) {
   let sortedLocations; // the sorted searchedLocation
   sectionBoxSelect.addEventListener("change", (e) => {
+    if(state.destinationLocations.candidates.length === 0) return;
     if (e.target.value === "By furthest")
       sortedLocations = sortLocations(false);
     if (e.target.value === "By nearest") sortedLocations = sortLocations(true);

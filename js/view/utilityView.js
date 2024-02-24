@@ -1,10 +1,10 @@
 import noDataImg from "url:../../img/undraw_no_data_re_kwbl.svg";
 import { state } from "../model/searchModel";
 import { selectors } from "../controller/selectors";
-export function displaySpinner(parentElement) {
+export function displaySpinner(parentElement,pos="absolute") {
   const spinner = document.querySelector(".spinner");
   if (spinner) spinner.remove();
-  const html = `<div class="lds-dual-ring spinner"></div>`;
+  const html = `<div style=position:${pos} class="lds-dual-ring spinner"></div>`
   parentElement.insertAdjacentHTML("afterbegin", html);
 }
 
@@ -36,29 +36,12 @@ export function displayError(parentElement, msg) {
  * @export
  */
 export function showRoutes() {
-  addUtilityClass(
-    selectors.locationItemsBox,
-    "section-box__locations-box-hidden"
-  );
-  addUtilityClass(
+  removeUtilityClass(
     selectors.routeContainer,
-    "section-box__locations-route--active"
+    "section-box__locations-route--inactive"
   );
-  removeUtiliyClass(selectors.locationItemsBox, "p-events");
-  selectors.locationItemsBox.scrollIntoView();
-  document.querySelector("body").scrollIntoView();
-  // addUtilityClass(selectors.locationContainer, "overflow-hidden");
-  addUtilityClass(selectors.paginationBox, "d-none");
-  setTimeout(() => {
-    addUtilityClass(selectors.locationItemsBox, "d-none");
-    selectors.nav.scrollIntoView({ behavior: "smooth" });
-  }, 500);
-  addUtilityClass(selectors.sectionBoxSelect, "d-none");
-  removeUtiliyClass(selectors.utilityText, "u-para--active");
-  addUtilityClass(
-    selectors.locationContainer,
-    "section-box__locations--active"
-  );
+  removeUtilityClass(selectors.locationItemsBox, "p-events");
+  removeUtilityClass(selectors.utilityText, "u-para--active");
 }
 
 /**
@@ -77,25 +60,7 @@ export function showMarkerOnPlace(currentDestination) {
   );
 }
 
-function position(pos) {
-  const { latitude, longitude } = pos.coords;
-  state.coordinates.latitude = latitude;
-  state.coordinates.longitude = longitude;
-}
 
-function error() {
-  return true;
-}
-/**
- *Function to get the current position of the user;
- *
- * @export
- */
-export function watchPosition() {
-  navigator.geolocation.getCurrentPosition(position, error, {
-    enableHighAccuracy: true,
-  });
-}
 /**
  *Function to add a class to an element
  *
@@ -107,7 +72,7 @@ export function addUtilityClass(parentElement, classList) {
   parentElement.classList.add(classList);
 }
 
-export function removeUtiliyClass(parentElement, classList) {
+export function removeUtilityClass(parentElement, classList) {
   parentElement.classList.remove(classList);
 }
 /**
@@ -116,13 +81,7 @@ export function removeUtiliyClass(parentElement, classList) {
  * @export
  * @return {*}
  */
-export function errorTimeout() {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      return reject({ name: "timeOut" });
-    }, 15000);
-  });
-}
+
 
 /**
  *Function to display an image with a given message on the webpage

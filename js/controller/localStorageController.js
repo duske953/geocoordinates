@@ -21,8 +21,8 @@ export function storeLocationsInLocalStorage() {
  */
 export function fetchLocationDetailsFromLocalStorage() {
   const place = JSON.parse(localStorage.getItem("place"));
-  if (!place) return;
+  if (!place) return []
   state.place = place;
-  handleLocationDetails(state.place); // making another request to their api
-  selectors.locationContainer.classList.add("section-box__locations--active");
+  handleLocationDetails(place); // making another request to their api
+  // selectors.locationContainer.classList.add("section-box__locations--active");
 }

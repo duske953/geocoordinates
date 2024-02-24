@@ -6,7 +6,8 @@
       content="Get locations closest to your area right now"
     />
     <meta name="keywords" content="places,locations,geolocation" />
-    <meta name="author" content="eloho kennedy" />
+    <meta name="author" content="Eloho kennedy" />
+
     <script type="module" defer src="/js/controller/index.js"></script>
     <link />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -24,8 +25,8 @@
 
   <body>
     <section class="section-box">
-      <nav class="section-box__nav">
-        <h1 class="section-box__heading">OEK</h1>
+      <nav class="section-box__nav section-box__nav--inactive">
+        <h1 class="section-box__heading">GEOCOORDINATES</h1>
 
         <button class="section-box__locations-btn">
           <ion-icon class="menu" name="menu-outline"></ion-icon>
@@ -35,168 +36,173 @@
         </button>
         <p class="u-para">Fetching directions...</p>
       </nav>
-      <div class="section-box__locations">
-        <div class="spinner-container--locations"> </div>
+ 
+      <div class="img-box"> </div>
 
-        <div class="section-box__locations-err"> </div>
-
-        <ul class="section-box__locations-box">
-          <div class="section-box__locations-img-box">
-            <img
-              class="section-box__locations-img"
-              src="img\undraw_no_data_re_kwbl.svg"
-              alt="img representing no data"
-            />
+      <section class='main-container'>
+        <div class="section-box__locations section-box__locations--inactive">
+          <div class="spinner-container--locations"> </div>
+  
+          <div class="section-box__locations-err"> </div>
+  
+          <ul class="section-box__locations-box ">
+            <div class="section-box__locations-img-box">
+              <img
+                class="section-box__locations-img"
+                src="img\undraw_no_data_re_kwbl.svg"
+                alt="img representing no data"
+              />
+            </div>
+          </ul>
+  
+          <select
+            class="section-box__select section-box__select--inactive"
+            name="sort"
+            id="sort"
+          >
+            <option value="" selected disabled hidden>Sort by</option>
+            <option value="By furthest">By furthest</option>
+            <option value="By nearest">By nearest</option>
+          </select>
+  
+          <div class="section-box__pagination">
+            <button
+              class="section-box__pagination-btn section-box__pagination-btn--prev"
+            >
+              <ion-icon
+                class="pagination-icon"
+                name="chevron-back-outline"
+              ></ion-icon>
+            </button>
+            <p class="section-box__pagination-text">1/5</p>
+            <button
+              class="section-box__pagination-btn section-box__pagination-btn--next"
+            >
+              <ion-icon
+                class="pagination-icon"
+                name="chevron-forward-outline"
+              ></ion-icon>
+            </button>
           </div>
-        </ul>
-
-        <div class="section-box__locations-route">
-          <div class="section-box__locations-route__header"> </div>
-          <ul class="section-box__locations-route-box"> </ul>
+          <footer class="section-footer">
+            <p class="section-footer__text"
+              >Created with love by
+              <a
+                class="section-footer__link"
+                target="__blank"
+                href="http://eloho-ken.b4a.app/"
+                >Eloho Kennedy</a
+              ></p
+            >
+          </footer>
         </div>
 
-        <select
-          class="section-box__select section-box__select--inactive"
-          name="sort"
-          id="sort"
-        >
-          <option value="" selected disabled hidden>Sort by</option>
-          <option value="By furthest">By furthest</option>
-          <option value="By nearest">By nearest</option>
-        </select>
-
-        <div class="section-box__pagination">
-          <button
-            class="section-box__pagination-btn section-box__pagination-btn--prev"
-          >
-            <ion-icon
-              class="pagination-icon"
-              name="chevron-back-outline"
-            ></ion-icon>
-          </button>
-          <p class="section-box__pagination-text">1/5</p>
-          <button
-            class="section-box__pagination-btn section-box__pagination-btn--next"
-          >
-            <ion-icon
-              class="pagination-icon"
-              name="chevron-forward-outline"
-            ></ion-icon>
-          </button>
+        <div style='position: relative;'>
+          <div class="section-box__locations-route section-box__locations-route--inactive">
+            <ul class="section-box__locations-route-box"> </ul>
+          </div>
         </div>
-      </div>
 
-      <div class="section-box__map" id="map">
-        <div class="spinner-container--map"> </div>
-        <div class="map__error map__error--inactive"> </div>
-        <div class="img-box"> </div>
-      </div>
+
+        <div class="section-box__map" id="map">
+          <div class="spinner-container--map"> </div>
+          <div class="map__error map__error--inactive"> </div>
+        </div>
+
+
+    
+      </section>
+      <section class="section-locations">
+        <div class="section-locations__container">
+          <ion-icon class="close-icon" name="close-outline"></ion-icon>
+          <ul class="section-locations__box">
+            <li class="section-locations__item" id="accommodation.hotel">
+              <a href="#hotel">Hotel</a>
+            </li>
+            <li class="section-locations__item" id="accommodation.motel">
+              <a href="#motel">Motel</a>
+            </li>
+            <li class="section-locations__item" id="parks.beach">
+              <a href="#beach">Beach</a>
+            </li>
+            <li class="section-locations__item" id="commercial.Grocery">
+              <a href="#Grocery">Grocery</a>
+            </li>
+            <li class="section-locations__item" id="sevice.Gym">
+              <a href="#Fitness Center">Gym</a>
+            </li>
+  
+            <li class="section-locations__item" id="parks.pool">
+              <a href="#Swimming pool">Swimming pool</a>
+            </li>
+  
+            <li class="section-locations__item" id="education.school">
+              <a href="#school">School</a>
+            </li>
+  
+            <li class="section-locations__item" id="education.library">
+              <a href="#library">Library</a>
+            </li>
+  
+            <li class="section-locations__item" id="education.college">
+              <a href="#college">College</a>
+            </li>
+  
+            <li class="section-locations__item" id="education.Night Club">
+              <a href="#Night Club">Night Club</a>
+            </li>
+  
+            <li class="section-locations__item" id="shop.Pet store">
+              <a href="#Pet Store">Pet store</a>
+            </li>
+  
+            <li class="section-locations__item" id="entertainment.museum">
+              <a href="#museum">Museum</a>
+            </li>
+            <li class="section-locations__item" id="entertainment.Cinema">
+              <a href="#cinema">Cinema</a>
+            </li>
+            <li class="section-locations__item" id="healthcare.hospital">
+              <a href="#hospital">Hospital</a>
+            </li>
+            <li class="section-locations__item" id="healthcare.pharmacy">
+              <a href="#pharmacy">Pharmacy</a>
+            </li>
+            <li class="section-locations__item" id="leisure.church">
+              <a href="#church">Church</a>
+            </li>
+            <li class="section-locations__item" id="leisure.mosque">
+              <a href="#mosque">Mosque</a>
+            </li>
+            <li class="section-locations__item" id="sport.soccer">
+              <a href="#soccer">Football</a>
+            </li>
+            <li class="section-locations__item" id="Travel.airport">
+              <a href="#Airport">Airport</a>
+            </li>
+            <li class="section-locations__item" id="shops.gas station">
+              <a href="#Gas Station">Gas station</a>
+            </li>
+            <li class="section-locations__item" id="proffesional.embassy">
+              <a href="#embassy">Embassy</a>
+            </li>
+            <li class="section-locations__item" id="service.financial.bank">
+              <a href="#bank">Bank</a>
+            </li>
+            <li class="section-locations__item" id="service.financial.atm">
+              <a href="#atm">Atm</a>
+            </li>
+          </ul>
+        </div>
+      </section>
     </section>
 
-    <section class="section-locations">
-      <div class="section-locations__container">
-        <ion-icon class="close-icon" name="close-outline"></ion-icon>
-        <ul class="section-locations__box">
-          <li class="section-locations__item" id="accommodation.hotel">
-            <a href="#hotel">Hotel</a>
-          </li>
-          <li class="section-locations__item" id="accommodation.motel">
-            <a href="#motel">Motel</a>
-          </li>
-          <li class="section-locations__item" id="parks.beach">
-            <a href="#beach">Beach</a>
-          </li>
-          <li class="section-locations__item" id="commercial.Grocery">
-            <a href="#Grocery">Grocery</a>
-          </li>
-          <li class="section-locations__item" id="sevice.Gym">
-            <a href="#Fitness Center">Gym</a>
-          </li>
 
-          <li class="section-locations__item" id="parks.pool">
-            <a href="#Swimming pool">Swimming pool</a>
-          </li>
-
-          <li class="section-locations__item" id="education.school">
-            <a href="#school">School</a>
-          </li>
-
-          <li class="section-locations__item" id="education.library">
-            <a href="#library">Library</a>
-          </li>
-
-          <li class="section-locations__item" id="education.college">
-            <a href="#college">College</a>
-          </li>
-
-          <li class="section-locations__item" id="education.Night Club">
-            <a href="#Night Club">Night Club</a>
-          </li>
-
-          <li class="section-locations__item" id="shop.Pet store">
-            <a href="#Pet Store">Pet store</a>
-          </li>
-
-          <li class="section-locations__item" id="entertainment.museum">
-            <a href="#museum">Museum</a>
-          </li>
-          <li class="section-locations__item" id="entertainment.Cinema">
-            <a href="#cinema">Cinema</a>
-          </li>
-          <li class="section-locations__item" id="healthcare.hospital">
-            <a href="#hospital">Hospital</a>
-          </li>
-          <li class="section-locations__item" id="healthcare.pharmacy">
-            <a href="#pharmacy">Pharmacy</a>
-          </li>
-          <li class="section-locations__item" id="leisure.church">
-            <a href="#church">Church</a>
-          </li>
-          <li class="section-locations__item" id="leisure.mosque">
-            <a href="#mosque">Mosque</a>
-          </li>
-          <li class="section-locations__item" id="sport.soccer">
-            <a href="#soccer">Football</a>
-          </li>
-          <li class="section-locations__item" id="Travel.airport">
-            <a href="#Airport">Airport</a>
-          </li>
-          <li class="section-locations__item" id="shops.gas station">
-            <a href="#Gas Station">Gas station</a>
-          </li>
-          <li class="section-locations__item" id="proffesional.embassy">
-            <a href="#embassy">Embassy</a>
-          </li>
-          <li class="section-locations__item" id="service.financial.bank">
-            <a href="#bank">Bank</a>
-          </li>
-          <li class="section-locations__item" id="service.financial.atm">
-            <a href="#atm">Atm</a>
-          </li>
-        </ul>
-      </div>
-    </section>
 
     <!-- <img src="img/undraw_access_denied_re_awnf.svg" alt=""> -->
 
-    <footer class="section-footer">
-      <p class="section-footer__text"
-        >Created with love by
-        <a
-          class="section-footer__link"
-          target="__blank"
-          href="http://eloho-ken.b4a.app/"
-          >Eloho Kennedy</a
-        ></p
-      >
-    </footer>
-    <script
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-      type="module"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-    ></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script type='module' src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   </body>
 </html>

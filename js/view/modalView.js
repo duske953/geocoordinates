@@ -1,5 +1,5 @@
 import { state } from "../model/searchModel";
-import { addUtilityClass, removeUtiliyClass } from "./utilityView";
+import {removeUtilityClass } from "./utilityView";
 import { selectors } from "../controller/selectors";
 import { handleHidingRoutes } from "../controller/locationRouteController";
 
@@ -23,25 +23,22 @@ export function modal() {
  */
 export function getPlaces(handler) {
   selectors.sectionPlaces.addEventListener("click", (e) => {
+    e.preventDefault()
     if (!e.target.getAttribute("href")) return;
     const place = e.target.getAttribute("href").slice(1);
     const placeReference = e.target.parentElement.getAttribute("id");
     selectors.locationBox.classList.remove("section-locations__active");
-    if (
-      selectors.routeContainer.classList.contains(
-        "section-box__locations-route--active"
-      )
-    )
-      handleHidingRoutes();
+    // selectors.locationContainer.firstElementChild.scrollIntoView({behavior:"smooth"})
+    selectors.locationContainer.scrollTo(0,0)
+    // selectors.locationContainer.style.zIndex = -1
+  // selectors.sectionBoxSelect.scrollIntoView({behavior:"smooth"})
+  // selectors.locationContainer.style.overflowY = "hidden"
+    handleHidingRoutes();
     state.paginate = 1;
 
     state.place.place = place; // The place we are searching (ie cinema or gas station)
     state.place.placeReference = placeReference;
-    addUtilityClass(
-      selectors.locationContainer,
-      "section-box__locations--active"
-    );
-    removeUtiliyClass(selectors.sectionBoxSelect, "d-none");
+    removeUtilityClass(selectors.sectionBoxSelect, "d-none");
     handler(state.place);
   });
 }

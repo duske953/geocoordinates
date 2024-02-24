@@ -1,10 +1,3 @@
-// .flex{
-//     display: flex;
-// }
-
-// .grid--2-col{
-//     display: grid;
-// }
 @import "https://js.arcgis.com/4.24/@arcgis/core/assets/esri/themes/dark/main.css";
 
 * {
@@ -18,22 +11,32 @@ body {
         sans-serif;
     position: relative;
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 
 html {
     font-size: 62.5%;
-overflow-x: hidden;
     @media (max-width:75em) {
         font-size: 56.25%;
     }
 }
 
+
+.main-container{
+    display:grid;
+    grid-template-columns: 0.3fr auto;
+
+    @media (max-width:63.125em) {
+        display: flex;
+    }
+}
+
+
 .section-box {
     display: grid;
-    grid-template-columns: 0.3fr auto;
     align-items: flex-start;
-    row-gap: 2.4rem;
+    row-gap: 1.2rem;
     column-gap: 1.2rem;
     position: relative;
 
@@ -53,26 +56,43 @@ overflow-x: hidden;
     }
 
     &__locations-route {
-        position: absolute;
-        top: 0;
-        padding: 7.4rem 0;
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-        width: 100%;
+        position: fixed;
+        width:30%;
+        padding: 6.4rem 0;
+
         left: 0;
-        height: 100vh;
-        transition: all .3s ease-in-out;
+        height: 90vh;
+        background-color: #e7f5ff;
+        transition: all .1s;
+        z-index:2000;
         overflow: auto;
+
+        @media (max-width:63.125em) {
+            width: 55%;
+        }
+
+        @media (max-width:35em) {
+            width: 85%;
+        }
+
+        @media (max-width:21.875em) {
+            width: 100%;
+        }
+
+
+
+   
 
         &::-webkit-scrollbar{
             display: none;
         }
 
-        &--active {
-            opacity: 1;
-            visibility: visible;
-            pointer-events: auto;
+        &--inactive {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transform: translateX(-200%);
+            z-index: -1
         }
 
         &-box {
@@ -80,10 +100,10 @@ overflow-x: hidden;
             text-align: center;
             display: flex;
             flex-direction: column;
-            gap: 5.4rem;
+            gap: 3.6rem;
             font-size: 1.8rem;
             padding: 0 1.6rem;
-
+            margin: 0 auto;
         }
     }
 
@@ -97,16 +117,17 @@ overflow-x: hidden;
         justify-content: center;
         padding: 0.8rem;
         align-items: center;
-        // height: 9.6rem;
-        // position: fixed;
-        // z-index: 10;
-        // width: 100%;
+        transition: all .2s;
+        position: sticky;
+        &--inactive{
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transform: translateY(-100%);
+        }
 
         @media (max-width:63.125em) {
-            margin-bottom: 0.5rem;
             justify-content: space-between;
-            position: fixed;
-            z-index: 1000000;
             width: 100%;
         }
     }
@@ -148,16 +169,7 @@ overflow-x: hidden;
         gap: 3.6rem;
         transition: all .2s;
         overflow: auto;
-        // width: 75%;
-        margin: 0 auto; // background-color: red;
-        // display: flex;
-
-        // @media (max-width:63.125em) {
-        //     display: grid;
-        //     grid-template-columns: repeat(2, 1fr);
-        //     gap: 3.6rem;
-        //     padding-top: 4.4rem;
-        // }
+        margin: 0 auto; 
         &::-webkit-scrollbar{
             display: none;
         };
@@ -208,28 +220,12 @@ overflow-x: hidden;
     }
 
 
-    // &__city {
-    //     align-self: flex-start;
-    // }
-
-    // &__state {
-    //     align-self: flex-end;
-    // }
-
     &__title {
         text-align: center;
         color: #555;
         font-size: 2rem;
         text-transform: uppercase;
         margin-top: 3.2rem;
-
-        // @media (max-width:63.125em) {
-        //     position: absolute;
-        //     justify-self: center;
-        //     margin-bottom: 5rem;
-        //     top: 0;
-        //     font-size: 4.4rem;
-        // }
     }
 
     &__address-1 {
@@ -320,7 +316,8 @@ overflow-x: hidden;
         width: 100%;
         padding: 1.2rem;
         color: #777;
-        font-size: 4.4rem;
+        font-size: 3rem;
+        font-weight: 700;
         color: #228be6;
 
         @media (max-width:63.125em) {
@@ -355,29 +352,24 @@ overflow-x: hidden;
         color: #777;
         font-weight: 500;
         text-transform: uppercase;
-    }
+}
 
     &__locations {
         background-color: #e7f5ff;
         padding: 4.4rem 1.6rem 7.4rem 1.6rem;
-        height: 100vh;
-        position: relative;
+        height: 90vh;
+        position: fixed;
+        width:30%;
+        z-index:5000;
         overflow: auto;
-        transition: all 0.4s;
+   
+        transition: all 0.1s;
         &::-webkit-scrollbar{
             display: none;
         };
 
         @media (max-width:63.125em) {
             width: 55%;
-            position: absolute;
-            top: 8.7rem;
-            left: 0;
-            transform: translateX(-100%);
-            opacity: 0;
-            pointer-events: none;
-            visibility: hidden;
-            z-index: 100000
         }
 
         @media (max-width:35em) {
@@ -388,16 +380,23 @@ overflow-x: hidden;
             width: 100%;
         }
 
+    };
+
+    &__locations--inactive{
+        opacity:0;
+        visibility:hidden;
+        pointer-events: none;
+        transform: translateX(-200%);
     }
 
+ 
 
     &__locations--active {
-        @media (max-width:63.125em) {
             pointer-events: auto;
             opacity: 1;
             transform: translateX(0);
             visibility: visible;
-        }
+        
     }
 
     &__locations-img {
@@ -406,13 +405,12 @@ overflow-x: hidden;
     }
 
     &__map {
-        // background-color: purple;
-        height: 100vh;
+        height: 90vh;
         position: relative;
-        // width: 50%;
+        grid-column: 2/-1;
 
         @media (max-width:63.125em) {
-            height: 108.9vh;
+            flex:1
         }
 
     }
@@ -436,18 +434,20 @@ overflow-x: hidden;
     }
 
     .img__error {
-        width: 75%;
+        width: 45rem;
+        margin-bottom: 2rem;
     }
 }
 
 
 .lds-dual-ring {
-    display: inline-block;
+    display: block;
     width: 80px;
     height: 80px;
     position: absolute;
     top: 50%;
     left: 50%;
+    z-index: 2000;
     transform: translate(-50%, -50%);
 }
 
@@ -478,11 +478,10 @@ overflow-x: hidden;
     top: 0;
     left: 50%;
     background-color: #f3f3f3;
-    // transform: translate(-50%, -50%);
-    transform: translate(-50%, -100%);
-    z-index: 10000000;
+    transform: translate(-50%,-100%);
     width: 75%;
     padding: 6.4rem;
+    z-index: 5000;
     visibility: hidden;
     pointer-events: none;
     opacity: 0;
@@ -518,7 +517,7 @@ overflow-x: hidden;
         opacity: 1;
         visibility: visible;
         pointer-events: auto;
-        transform: translate(-50%, 0);
+        transform: translate(-50%,0);
     }
 
     &__box {
@@ -551,12 +550,10 @@ overflow-x: hidden;
 }
 
 
-.spinner {
-    z-index: 1000000;
-}
+
 
 .img-box {
-    position: absolute;
+    position: fixed;
     left: 50%;
     top:50%;
     transform: translate(-50%,-50%);
@@ -564,6 +561,7 @@ overflow-x: hidden;
     font-size: 1.6rem;
     line-height: 1.4;
     font-weight: 500;
+    z-index: 5000;
 
 }
 
@@ -582,8 +580,8 @@ overflow-x: hidden;
     width: 4rem;
     color: #333;
     position: absolute;
-    top: 3.6rem;
-    left: 1rem;
+    top: 0;
+    left: 0;
     cursor:pointer;
 }
 
@@ -591,6 +589,7 @@ overflow-x: hidden;
 .menu {
     height: 3.5rem;
     width: 3.5rem;
+    display: block;
     color: #000;
 }
 
@@ -691,4 +690,12 @@ overflow-x: hidden;
         color: #228be6;
         font-weight: 500;
     }
+}
+
+.pos-abs{
+    position: absolute !important
+}
+
+.img-error-text{
+    padding:0 1.8rem;
 }

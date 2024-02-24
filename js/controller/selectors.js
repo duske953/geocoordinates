@@ -8,6 +8,7 @@ export const selectors = {
   imgErrorContainer: document.querySelector(".img-box"),
   mapBox: document.getElementById("map"),
   sectionBoxSelect: document.querySelector(".section-box__select"),
+  sectionBoxNav: document.querySelector(".section-box__nav"),
   spinnerLocations: document.querySelector(".spinner-container--locations"),
   nav: document.querySelector("nav"),
   arrowIcon: document.querySelector(".arrow-icon"),

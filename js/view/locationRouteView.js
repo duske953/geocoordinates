@@ -1,5 +1,5 @@
 import date from "date-and-time";
-import { removeUtiliyClass } from "./utilityView";
+import { removeUtilityClass } from "./utilityView";
 import { selectors } from "../controller/selectors";
 import { state } from "../model/searchModel";
 
@@ -34,6 +34,8 @@ export function displayRoute(routes, place) {
   selectors.routeBox.insertAdjacentHTML("afterbegin", goBackIcon);
   selectors.routeBox.insertAdjacentHTML("afterbegin", heading);
 }
+
+
 /**
  *Function to hide the routes
  *
@@ -43,7 +45,8 @@ export function displayRoute(routes, place) {
 export function hideRoutes(handler) {
   selectors.routeBox.addEventListener("click", (e) => {
     if (!e.target.classList.contains("arrow-icon")) return;
-    removeUtiliyClass(selectors.sectionBoxSelect, "d-none");
+    // removeUtilityClass(selectors.sectionBoxSelect, "d-none");
+    state.activeNav = 0;
     setTimeout(() => {
       state.currentDestination.placeElement.scrollIntoView({
         behavior: "smooth",

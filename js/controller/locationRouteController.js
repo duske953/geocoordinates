@@ -2,11 +2,11 @@ import { displayRoute } from "../view/locationRouteView";
 import { routePath } from "../view/mapView";
 import { state } from "../model/searchModel";
 import { selectors } from "./selectors";
+import { errorTimeout, watchPosition } from './utilityController';
 import {
   showRoutes,
   addUtilityClass,
-  removeUtiliyClass,
-  errorTimeout,
+  removeUtilityClass,
   showMarkerOnPlace,
 } from "../view/utilityView";
 import { handleCurrentSearchedLocation } from "../model/locationRouteModel";
@@ -22,6 +22,8 @@ import { handleCurrentSearchedLocation } from "../model/locationRouteModel";
 export async function handleRouting(coords, place, currentDestinationElement) {
   // setting pointer-events to none when location is clicked
   if (state.routes.place_id === place.place_id) {
+    state.activeNav = 1;
+    addUtilityClass(selectors.locationContainer,"section-box__locations--inactive")
     showRoutes();
     return;
   }
@@ -33,22 +35,23 @@ export async function handleRouting(coords, place, currentDestinationElement) {
       errorTimeout(),
       handleCurrentSearchedLocation(coords, place),
     ]);
-    showRoutes();
-
+    // watchPosition()
+    addUtilityClass(selectors.locationContainer,"section-box__locations--inactive")
     showMarkerOnPlace(currentDestinationElement);
     displayRoute(state.routes, place);
-
+    showRoutes();
+    state.activeNav = 1;
     const [lat, lng] = coords.split(",");
     routePath(lng, lat);
     state.location.longitude = lng;
     state.location.latitude = lat;
   } catch (err) {
     selectors.utilityText.textContent = "Someting went wrong";
-    removeUtiliyClass(selectors.locationItemsBox, "p-events");
+    removeUtilityClass(selectors.locationItemsBox, "p-events");
     addUtilityClass(selectors.utilityText, "u-para--active");
     setTimeout(() => {
-      removeUtiliyClass(selectors.utilityText, "u-para--active");
-    }, 3000);
+      removeUtilityClass(selectors.utilityText, "u-para--active");
+    }, 500);
   }
 }
 
@@ -58,23 +61,11 @@ export async function handleRouting(coords, place, currentDestinationElement) {
  * @export
  */
 export function handleHidingRoutes() {
-  removeUtiliyClass(selectors.locationItemsBox, "d-none");
-  removeUtiliyClass(selectors.paginationBox, "d-none");
-
-  removeUtiliyClass(selectors.locationContainer, "overflow-hidden");
-
-  setTimeout(() => {
-    removeUtiliyClass(
-      selectors.locationItemsBox,
-      "section-box__locations-box-hidden"
+    removeUtilityClass(
+      selectors.locationContainer, "section-box__locations--inactive"
     );
-    removeUtiliyClass(
+    addUtilityClass(
       selectors.routeContainer,
-      "section-box__locations-route--active"
+      "section-box__locations-route--inactive"
     );
-  }, 100);
-
-  setTimeout(() => {
-    selectors.nav.scrollIntoView({ behavior: "smooth" });
-  }, 1500);
 }

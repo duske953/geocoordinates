@@ -1,17 +1,23 @@
 import { selectors } from "../controller/selectors";
-import { removeUtiliyClass } from "./utilityView";
+import { state } from '../model/searchModel';
+import { removeUtilityClass } from "./utilityView";
 export function OpenNavBar(handler) {
   selectors.btnLocations.addEventListener("click", (e) => {
     const btn = e.target.closest(".section-box__locations-btn");
     if (!btn) return;
-    selectors.locationContainer.classList.toggle(
-      "section-box__locations--active"
+    if(Object.entries(state.currentDestination).length === 0){
+      return selectors.locationContainer.classList.toggle(
+        "section-box__locations--inactive"
+      );
+    }
+    if(state.activeNav === 0)    
+    return selectors.locationContainer.classList.toggle(
+      "section-box__locations--inactive"
     );
-
-    handler();
+    return selectors.routeContainer.classList.toggle("section-box__locations-route--inactive")
   });
 }
 
 selectors.closeIcon.addEventListener("click", () => {
-  removeUtiliyClass(selectors.locationBox, "section-locations__active");
+  removeUtilityClass(selectors.locationBox, "section-locations__active");
 });
