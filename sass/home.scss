@@ -323,6 +323,7 @@ html {
 
         @media (max-width:63.125em) {
             width: initial;
+            font-size: 2.6rem;
         }
     }
 
@@ -479,13 +480,10 @@ html {
     top: 0;
     left: 50%;
     background-color: #f3f3f3;
-    transform: translate(-50%,-100%);
+    transform: translate(-50%,0);
     width: 75%;
     padding: 6.4rem;
     z-index: 5000;
-    visibility: hidden;
-    pointer-events: none;
-    opacity: 0;
     transition: all 0.1s ease-in-out;
 
     @media (max-width:63.125em) {
@@ -514,11 +512,11 @@ html {
 
 
 
-    &__active {
-        opacity: 1;
-        visibility: visible;
-        pointer-events: auto;
-        transform: translate(-50%,0);
+    &__inactive {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translate(-50%,-100%);
     }
 
     &__box {
@@ -615,13 +613,13 @@ html {
 
 .u-para {
     position: fixed;
-
     text-align: center;
     left: 50%;
     top: 2.4rem;
     transform: translate(-50%, -200%);
-    background-color: #adb5bd;
+    background-color: #74c0fc;
     color: #fff;
+    font-weight: 500;
     font-size: 1.8rem;
     padding: 1.2rem 1.6rem;
 

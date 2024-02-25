@@ -292,6 +292,7 @@ html {
 @media (max-width: 63.125em) {
   .section-box__heading {
     width: initial;
+    font-size: 2.6rem;
   }
 }
 .section-box__select {
@@ -426,13 +427,10 @@ html {
   top: 0;
   left: 50%;
   background-color: #f3f3f3;
-  transform: translate(-50%, -100%);
+  transform: translate(-50%, 0);
   width: 75%;
   padding: 6.4rem;
   z-index: 5000;
-  visibility: hidden;
-  pointer-events: none;
-  opacity: 0;
   transition: all 0.1s ease-in-out;
 }
 @media (max-width: 63.125em) {
@@ -457,11 +455,11 @@ html {
   right: -2.5rem;
   cursor: pointer;
 }
-.section-locations__active {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  transform: translate(-50%, 0);
+.section-locations__inactive {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate(-50%, -100%);
 }
 .section-locations__box {
   display: grid;
@@ -553,8 +551,9 @@ html {
   left: 50%;
   top: 2.4rem;
   transform: translate(-50%, -200%);
-  background-color: #adb5bd;
+  background-color: #74c0fc;
   color: #fff;
+  font-weight: 500;
   font-size: 1.8rem;
   padding: 1.2rem 1.6rem;
   z-index: 1;

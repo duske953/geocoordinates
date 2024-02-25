@@ -10,24 +10,27 @@ import { handleHidingRoutes } from "./locationRouteController";
 import { handleRouting } from "./locationRouteController";
 import { modal, getPlaces } from "../view/modalView";
 import { getCurrentSearchedLocation } from "./../view/locationView";
-import { handlePaginationNext } from "./paginationController";
+import { handlePaginationNext,handlePaginationPrev } from "./paginationController";
 import { renderPaginationNext } from "./../view/paginationView";
-import { handlePaginationPrev } from "./paginationController";
 import { renderPaginationPrev } from "./../view/paginationView";
-import { watchPosition } from './utilityController';
-import { handleIntersection } from "./../view/utilityView";
+import { pulltorefresh } from '@operato/pull-to-refresh'
+import PullToRefresh from 'pulltorefreshjs';
 
 import { renderSectionBoxSelect } from "../view/sortView";
 import { OpenNavBar } from "../view/btnView";
-import { state } from '../model/searchModel';
 import { selectors } from './selectors';
-const spinnerContainer = document.querySelector(".spinner-container--map");
 
 function renderNavBar() {
   return true;
 }
 
-
+PullToRefresh.init({
+  mainElement:selectors.nav,
+  triggerElement:selectors.nav,
+  onRefresh(){
+    window.location.reload()
+  }
+})
 
 
 navigator.geolocation.getCurrentPosition(coordinates, errorCoordinates, {
@@ -35,10 +38,7 @@ navigator.geolocation.getCurrentPosition(coordinates, errorCoordinates, {
   timeout: 15000,
 });
 
-// setInterval(() => {
-// watchPosition()
-// console.log(state.coordinates)
-// },1000)
+
 
 function init() {
   displaySpinner(selectors.mapBox,"fixed");

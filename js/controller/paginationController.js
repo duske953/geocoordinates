@@ -11,11 +11,8 @@ function handlePaginationClicks() {
     renderLocations(),
     state.destinationLocations.placeReference
   );
-  selectors.locationItemsBox.scrollIntoView();
+  selectors.locationContainer.scrollTo(0,0)
   selectors.sectionBoxSelect.selectedIndex = 0;
-  setTimeout(() => {
-    selectors.nav.scrollIntoView();
-  }, 500);
 }
 /**
  *Function that controls the "next" button when the pagination is clicked

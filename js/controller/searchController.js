@@ -37,10 +37,10 @@ export async function handleLocationDetails(place) {
     removeUtilityClass(selectors.locationContainer,"section-box__locations--inactive")
     document.querySelector(".spinner").remove()
     document.querySelector("footer").style.display = "block"
+    selectors.locationContainer.style.cursor = "default"
+    selectors.locationContainer.style.pointerEvents = "auto"
     paginationView();
     displayLocations(renderLocations(), state.place.placeReference);
-
-      // selectors.locationContainer.style.zIndex = 2000
 
   } catch (err) {
     document.querySelector("footer").style.display = "none"

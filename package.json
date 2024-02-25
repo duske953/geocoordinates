@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "@arcgis/core": "^4.24.7",
+    "@operato/pull-to-refresh": "^2.0.0-alpha.28",
     "array-sort": "^1.0.0",
     "axios": "^0.27.2",
     "core-js": "^3.23.3",
@@ -19,10 +20,13 @@
     "dotenv": "^16.0.1",
     "esri-loader": "^3.5.0",
     "geolib": "^3.3.3",
+    "pulltorefreshjs": "^0.1.22",
     "regenerator-runtime": "^0.13.9",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "@parcel/packager-raw-url": "^2.6.0",
+    "@parcel/transformer-webmanifest": "^2.6.0",
     "buffer": "^6.0.3",
     "os-browserify": "^0.3.0",
     "parcel": "^2.6.0",

@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
+ <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
+<link rel="manifest" href="/favicon_io/site.webmanifest"> 
     <meta
       name="description"
       content="Get locations closest to your area right now"
@@ -26,7 +30,7 @@
   <body>
     <section class="section-box">
       <nav class="section-box__nav section-box__nav--inactive">
-        <h1 class="section-box__heading">COMPASS</h1>
+        <h1 class="section-box__heading">GEOCOORDS</h1>
 
         <button class="section-box__locations-btn">
           <ion-icon class="menu" name="menu-outline"></ion-icon>
@@ -84,12 +88,13 @@
               ></ion-icon>
             </button>
           </div>
-          <footer class="section-footer">
+          <footer style='display: none;' class="section-footer">
             <p class="section-footer__text"
               >Created with love by
               <a
                 class="section-footer__link"
                 target="__blank"
+                rel='noopener noreferrer'
                 href="http://eloho-ken.b4a.app/"
                 >Eloho Kennedy</a
               ></p
@@ -112,7 +117,7 @@
 
     
       </section>
-      <section class="section-locations">
+      <section class="section-locations section-locations__inactive">
         <div class="section-locations__container">
           <ion-icon class="close-icon" name="close-outline"></ion-icon>
           <ul class="section-locations__box">
