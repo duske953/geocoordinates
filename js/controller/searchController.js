@@ -43,6 +43,8 @@ export async function handleLocationDetails(place) {
     displayLocations(renderLocations(), state.place.placeReference);
 
   } catch (err) {
+    selectors.locationContainer.style.cursor = "default"
+    selectors.locationContainer.style.pointerEvents = "auto"
     document.querySelector("footer").style.display = "none"
     addUtilityClass(selectors.sectionBoxSelect,"section-box__select--inactive")
     document.querySelector(".spinner").remove()
