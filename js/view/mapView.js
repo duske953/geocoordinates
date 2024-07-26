@@ -6,7 +6,6 @@ setDefaultOptions({
 });
 
 import { state } from "../model/searchModel";
-import { removeElement } from "./utilityView";
 import { watchPosition } from '../controller/utilityController';
 
 let path;
