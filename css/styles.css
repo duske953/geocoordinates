@@ -35,6 +35,8 @@ html {
 
 .section-box {
   display: grid;
+  max-width: 150rem;
+  margin-inline: auto;
   align-items: flex-start;
   row-gap: 1.2rem;
   column-gap: 1.2rem;
@@ -56,7 +58,7 @@ html {
   font-size: 2.4rem;
 }
 .section-box__locations-route {
-  position: fixed;
+  position: absolute;
   width: 30%;
   padding: 6.4rem 0;
   padding-bottom: 12.4rem;
@@ -322,7 +324,7 @@ html {
   background-color: #e7f5ff;
   padding: 4.4rem 1.6rem 7.4rem 1.6rem;
   height: 90vh;
-  position: fixed;
+  position: absolute;
   width: 30%;
   z-index: 5000;
   overflow: auto;
