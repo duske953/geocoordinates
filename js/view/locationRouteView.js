@@ -47,11 +47,11 @@ export function hideRoutes(handler) {
     if (!e.target.classList.contains("arrow-icon")) return;
     // removeUtilityClass(selectors.sectionBoxSelect, "d-none");
     state.activeNav = 0;
-    setTimeout(() => {
-      state.currentDestination.placeElement.scrollIntoView({
-        behavior: "smooth",
-      });
-    }, 500);
+    // setTimeout(() => {
+    //   state.currentDestination.placeElement.scrollIntoView({
+    //     behavior: "smooth",
+    //   });
+    // }, 500);
     handler();
   });
 }

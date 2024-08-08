@@ -35,7 +35,7 @@ html {
 
 .section-box {
   display: grid;
-  max-width: 150rem;
+  max-width: 200rem;
   margin-inline: auto;
   align-items: flex-start;
   row-gap: 1.2rem;
