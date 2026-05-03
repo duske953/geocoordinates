@@ -1,8 +1,7 @@
-const axios = require("axios");
+import axios from "axios";
 import { watchPosition } from '../controller/utilityController';
 import { getDistance } from "geolib";
 import { v4 as uuidv4 } from "uuid";
-import { API_KEY } from "../controller/helpers";
 
 export const state = {
   place: {},
@@ -63,10 +62,12 @@ function mergeDataToLocations(arg) {
  * @return {Array} An array of the locations gotten from the api
  */
 async function getLocationDetails(category, coords) {
-  if (!category && !coords) return;
+  if (!category || !coords || !coords.latitude || !coords.longitude) {
+    throw new Error("Location coordinates are not available yet.");
+  }
   try {
     const locationData = await axios.get(
-      `https://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates?singleLine=&category=${category.place}&location=${coords.longitude},${coords.latitude}&outfields=*&token=${process.env.API_KEY}&f=json`
+      `https://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates?singleLine=&category=${category.place}&location=${coords.longitude},${coords.latitude}&outfields=*&token=${import.meta.env.VITE_API_KEY}&f=json`
     );
     return locationData.data;
   } catch (err) {

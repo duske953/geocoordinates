@@ -1,11 +1,11 @@
-import noDataImg from "url:../../img/undraw_no_data_re_kwbl.svg";
-import { state } from "../model/searchModel";
-import { selectors } from "../controller/selectors";
-export function displaySpinner(parentElement,pos="absolute") {
-  const spinner = document.querySelector(".spinner");
+import noDataImg from '../../img/undraw_no_data_re_kwbl.svg';
+import { state } from '../model/searchModel';
+import { selectors } from '../controller/selectors';
+export function displaySpinner(parentElement, pos = 'absolute') {
+  const spinner = document.querySelector('.spinner');
   if (spinner) spinner.remove();
-  const html = `<div style=position:${pos} class="lds-dual-ring spinner"></div>`
-  parentElement.insertAdjacentHTML("afterbegin", html);
+  const html = `<div style=position:${pos} class="lds-dual-ring spinner"></div>`;
+  parentElement.insertAdjacentHTML('afterbegin', html);
 }
 
 /**
@@ -15,7 +15,7 @@ export function displaySpinner(parentElement,pos="absolute") {
  * @param {String || NODE} parentElement The parentElement of the child
  */
 export function removeElement(parentElement) {
-  parentElement.innerHTML = "";
+  parentElement.innerHTML = '';
 }
 
 /**
@@ -27,7 +27,7 @@ export function removeElement(parentElement) {
  */
 export function displayError(parentElement, msg) {
   removeElement(parentElement);
-  parentElement.insertAdjacentHTML("afterbegin", msg);
+  parentElement.insertAdjacentHTML('afterbegin', msg);
 }
 
 /**
@@ -38,10 +38,10 @@ export function displayError(parentElement, msg) {
 export function showRoutes() {
   removeUtilityClass(
     selectors.routeContainer,
-    "section-box__locations-route--inactive"
+    'section-box__locations-route--inactive',
   );
-  removeUtilityClass(selectors.locationItemsBox, "p-events");
-  removeUtilityClass(selectors.utilityText, "u-para--active");
+  removeUtilityClass(selectors.locationItemsBox, 'p-events');
+  removeUtilityClass(selectors.utilityText, 'u-para--active');
 }
 
 /**
@@ -52,14 +52,13 @@ export function showRoutes() {
  */
 export function showMarkerOnPlace(currentDestination) {
   document
-    .querySelectorAll(".section-box__locations-item--active")
+    .querySelectorAll('.section-box__locations-item--active')
     .forEach((el) => el.remove());
   currentDestination.insertAdjacentHTML(
-    "beforeend",
-    `<span class="section-box__locations-item--active">&nbsp;</span>`
+    'beforeend',
+    `<span class="section-box__locations-item--active">&nbsp;</span>`,
   );
 }
-
 
 /**
  *Function to add a class to an element
@@ -81,7 +80,6 @@ export function removeUtilityClass(parentElement, classList) {
  * @export
  * @return {*}
  */
-
 
 /**
  *Function to display an image with a given message on the webpage

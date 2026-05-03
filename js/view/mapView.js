@@ -1,11 +1,11 @@
-import { loadModules, setDefaultOptions } from "esri-loader";
-import { selectors } from "../controller/selectors";
-import { fetchLocationDetailsFromLocalStorage } from "../controller/localStorageController";
+import { loadModules, setDefaultOptions } from 'esri-loader';
+import { selectors } from '../controller/selectors';
+import { fetchLocationDetailsFromLocalStorage } from '../controller/localStorageController';
 setDefaultOptions({
-  css: "https://js.arcgis.com/4.24/@arcgis/core/assets/esri/themes/dark/main.css",
+  css: 'https://js.arcgis.com/4.24/@arcgis/core/assets/esri/themes/dark/main.css',
 });
 
-import { state } from "../model/searchModel";
+import { state } from '../model/searchModel';
 import { watchPosition } from '../controller/utilityController';
 
 let path;
@@ -19,10 +19,10 @@ let path;
  */
 async function getRoute(userLat, userLng, locationLat, locationLng) {
   const [RouteParameters, route, Stop, Collection] = await loadModules([
-    "esri/rest/support/RouteParameters",
-    "esri/rest/route",
-    "esri/rest/support/Stop",
-    "esri/core/Collection",
+    'esri/rest/support/RouteParameters',
+    'esri/rest/route',
+    'esri/rest/support/Stop',
+    'esri/core/Collection',
   ]);
 
   const stops = new Collection([
@@ -42,12 +42,12 @@ async function getRoute(userLat, userLng, locationLat, locationLng) {
   });
 
   const routeUrl =
-    "https://route-api.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World";
+    'https://route-api.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World';
 
   const data = await route.solve(routeUrl, routeParams);
   path = data.routeResults[0];
   path.route.symbol = {
-    type: "simple-line",
+    type: 'simple-line',
     color: [5, 150, 255],
     width: 4,
   };
@@ -66,7 +66,7 @@ let pointLocationGraphic;
  */
 export async function routePath(longitude, latitude) {
   watchPosition();
-  const [Graphic] = await loadModules(["esri/Graphic"]);
+  const [Graphic] = await loadModules(['esri/Graphic']);
 
   if (path) {
     state.mapView.graphics.remove(path.route);
@@ -78,20 +78,20 @@ export async function routePath(longitude, latitude) {
   } // making sure there's only one point of the location we are visiting
 
   const pointLocation = {
-    type: "point",
+    type: 'point',
     longitude,
     latitude,
   }; // the coordinates points of the location we are visiting;
 
   const userPoint = {
-    type: "point",
+    type: 'point',
     longitude: state.coordinates.longitude,
     latitude: state.coordinates.latitude,
   }; // the user's current coordinates points
 
   const pointLocationSymbol = {
-    type: "simple-marker",
-    size: "20px",
+    type: 'simple-marker',
+    size: '20px',
     color: [224, 49, 49], // Orange
     outline: {
       color: [255, 255, 255], // White
@@ -120,7 +120,7 @@ export async function routePath(longitude, latitude) {
     state.coordinates.latitude,
     state.coordinates.longitude,
     latitude,
-    longitude
+    longitude,
   );
 }
 
@@ -132,8 +132,8 @@ let trackGraphic;
  */
 async function trackUserLocation() {
   const [Graphic, Track] = await loadModules([
-    "esri/Graphic",
-    "esri/widgets/Track",
+    'esri/Graphic',
+    'esri/widgets/Track',
   ]);
   // if (track) {
   //   track.destroy();
@@ -144,12 +144,12 @@ async function trackUserLocation() {
     goToLocationEnabled: true,
     graphic: new Graphic({
       symbol: {
-        type: "simple-marker",
-        size: "20px",
-        color: "green",
+        type: 'simple-marker',
+        size: '20px',
+        color: 'green',
         outline: {
-          color: "#efefef",
-          width: "1.5px",
+          color: '#efefef',
+          width: '1.5px',
         },
       },
     }),
@@ -159,17 +159,17 @@ async function trackUserLocation() {
 
   state.mapView.when(
     function (res) {
-      document.querySelector(".spinner").remove() // removing the spinner once the map loads(when it's ready)
+      document.querySelector('.spinner').remove(); // removing the spinner once the map loads(when it's ready)
       setTimeout(() => {
         fetchLocationDetailsFromLocalStorage();
-      },1500)
-   
+      }, 1500);
+
       track.start();
-      track.on("track", (res) => {});
+      track.on('track', (res) => {});
     },
     function err() {
       return true;
-    }
+    },
   );
 }
 /**
@@ -181,14 +181,13 @@ async function trackUserLocation() {
  */
 export async function displayMap(latitude, longitude) {
   const [Map, MapView, esriConfig] = await loadModules([
-    "esri/Map",
-    "esri/views/MapView",
-    "esri/config",
+    'esri/Map',
+    'esri/views/MapView',
+    'esri/config',
   ]);
-  esriConfig.apiKey =
-    `${process.env.API_KEY}`
+  esriConfig.apiKey = `${import.meta.env.VITE_API_KEY}`;
   state.map = new Map({
-    basemap: "arcgis-navigation-night", // Basemap layer service
+    basemap: 'arcgis-navigation-night', // Basemap layer service
   });
 
   state.mapView = new MapView({
@@ -197,5 +196,11 @@ export async function displayMap(latitude, longitude) {
     zoom: 12, // Zoom level
     container: selectors.mapBox, // Div element
   });
+
+  // Ensure map is correctly sized even if container was transitioning
+  state.mapView.when(() => {
+    state.mapView.container.style.height = '100vh';
+  });
+
   await trackUserLocation();
 }

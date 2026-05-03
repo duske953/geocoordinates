@@ -6,7 +6,7 @@ async function getLocationRoutes(locationCoords, userCoords) {
   const [lat, lng] = locationCoords.split(",");
   try {
     const routeData = await axios.get(
-      `https://route.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World/solve?f=json&travel_mode=driving&token=${process.env.API_KEY}&startTime=now&returnDirections=true&stops=${userCoords.longitude},${userCoords.latitude};${lng},${lat}`
+      `https://route.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World/solve?f=json&travel_mode=driving&token=${import.meta.env.VITE_API_KEY}&startTime=now&returnDirections=true&stops=${userCoords.longitude},${userCoords.latitude};${lng},${lat}`
     );
     return routeData.data;
   } catch (err) {

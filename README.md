@@ -20,7 +20,7 @@ Make navigating unfamiliar areas a breeze with Geocoordinates, a user-friendly s
 * CSS/Sass: Styling and visual design
 * Vanilla JavaScript: Interactive elements, user interface enhancements, and making API requests directly from the browser
 * ArcGIS JavaScript API: Performing location-based searches and retrieving geospatial data
-* Parcel : Used for bundling Javascript modules and processing assets like CSS and images for optimized performance.
+* Vite : Used for bundling Javascript modules and processing assets like CSS and images for optimized performance.
 
 **Getting Started:**
 
@@ -37,7 +37,7 @@ Make navigating unfamiliar areas a breeze with Geocoordinates, a user-friendly s
    * Create an account and follow the instructions to obtain an API key. 
 4. **Start the Development Server:**
    ```bash
-   npm watch:js
+   npm run dev
    ```
 5. **Open the Application:**
    * Navigate to http://localhost:3000 (or the specified port) in your web browser.
